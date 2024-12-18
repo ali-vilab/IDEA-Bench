@@ -4,11 +4,11 @@ from collections import defaultdict
 
 # Task ID categories
 CATEGORIES = {
-    "T2I": {"24", "26", "28"},
-    "I2I": {"63", "72"},
-    "Is2I": {"64", "65", "73"},
-    "T2Is": {"14", "15", "16", "17"},
-    "Is2Is": {"44", "45", "46", "49"},
+    "T2I": {"0024", "0026", "0028"},
+    "I2I": {"0063", "0072"},
+    "Is2I": {"0064", "0065", "0073"},
+    "T2Is": {"0014", "0015", "0016", "0017"},
+    "Is2Is": {"0044", "0045", "0046", "0049"},
 }
 
 def process_csv(file_path):
@@ -62,7 +62,7 @@ def process_csv(file_path):
     task_results = {}
     for task_id, scores in case_results.items():
         task_average = sum(scores) / len(scores)
-        task_results[task_id] = (task_average / 6) * 100  # Convert to percentage
+        task_results[task_id] = task_average * 100  # Convert to percentage
     
     # Step 5: Calculate category-level scores
     category_results = {category: [] for category in CATEGORIES}

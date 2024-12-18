@@ -11,12 +11,7 @@ from datetime import datetime
 from tqdm import tqdm
 import argparse
 
-# Set up a proxy server for HTTP and HTTPS requests if necessary
-proxy = "YOUR_PROXY_ADDRESS"
-os.environ['HTTP_PROXY'] = proxy  # Set HTTP proxy
-os.environ['HTTPS_PROXY'] = proxy  # Set HTTPS proxy
-
-genai.configure(api_key="YOUT_API_KEY")
+genai.configure(api_key="YOUR_API_KEY")
 
 MAX_RETRIES = 10  # Maximum number of retries for API calls
 TIMEOUT = 60  # Timeout in seconds for API calls
@@ -59,9 +54,42 @@ def call_gemini_api_with_base64(text_prompt, image_path):
         return "Error"
 
 def find_first_and_last_quote(s):
-    """Find the first and last double quote positions in a string."""
-    first = s.find('"')  # Find the first double quote
-    last = s.rfind('"')  # Find the last double quote
+    """
+    Find the positions of the first and last quotes (single or double) in a string.
+
+    Returns:
+        first (int): Position of the first quote.
+        last (int): Position of the last quote.
+        If no quotes are found, returns (-1, -1).
+    """
+    # Find the first occurrence of any quote (single or double)
+    first_single = s.find("'")
+    first_double = s.find('"')
+    
+    # Select the earliest quote as the first quote
+    if first_single == -1:
+        first = first_double
+    elif first_double == -1:
+        first = first_single
+    else:
+        first = min(first_single, first_double)
+
+    # Find the last occurrence of any quote (single or double)
+    last_single = s.rfind("'")
+    last_double = s.rfind('"')
+    
+    # Select the latest quote as the last quote
+    if last_single == -1:
+        last = last_double
+    elif last_double == -1:
+        last = last_single
+    else:
+        last = max(last_single, last_double)
+
+    # If no quotes are found, return (-1, -1)
+    if first == -1 or last == -1 or first >= last:
+        return -1, -1
+
     return first, last
 
 def extract_score(response):
@@ -70,17 +98,18 @@ def extract_score(response):
         # Remove surrounding ```json or ``` markers
         response_cleaned = re.sub(r"```json|```", "", response).strip()
         
-        # Extract the score (the first number after "score":)
-        score_match = re.search(r'"score":\s*(\d)', response_cleaned)
+        # Extract the score (the first number after 'score': or "score":)
+        score_match = re.search(r'["\']score["\']\s*:\s*(\d)', response_cleaned)
         if not score_match:
             return None, "Score not found"
         score = int(score_match.group(1))  # Extracted score
         
-        # Extract the reason (everything after "reason":)
-        reason_match = re.search(r'"reason":\s*(.+)$', response_cleaned, re.DOTALL)
+        # Extract the reason (everything after 'reason': or "reason":)
+        reason_match = re.search(r'["\']reason["\']\s*:\s*(.+)$', response_cleaned, re.DOTALL)
         if not reason_match:
             return score, "Reason not found"
         reason = reason_match.group(1)  # Full reason including potential outer quotes
+
         first, last = find_first_and_last_quote(reason)
         reason = reason[first+1:last]
         

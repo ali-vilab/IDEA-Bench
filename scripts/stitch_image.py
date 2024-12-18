@@ -71,7 +71,7 @@ def create_placeholder_image(output_count, width=512, height=512):
     # Dynamically adjust font size
     font_size = min(width, height) // 2
     try:
-        font = ImageFont.truetype("configs/DejaVuSans.ttf", size=font_size)
+        font = ImageFont.truetype("assets/DejaVuSans.ttf", size=font_size)
     except IOError:
         print("Warning: Unable to load 'DejaVuSans.ttf'. Using default font.")
         font = ImageFont.load_default()
@@ -157,6 +157,8 @@ def main():
 
     csv_rows = [["task_name", "task_id", "case_id", "question_id", "text_prompt", "stitched_image"]]
 
+    print(source_root)
+    input()
     for root, dirs, _ in os.walk(source_root):
         for case_dir in dirs:
             case_path = os.path.join(root, case_dir)
