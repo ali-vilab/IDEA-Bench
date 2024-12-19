@@ -4,7 +4,7 @@
     <img src="./assets/tasks_vis.png" width="100%" height="100%">
 </p>
 
-<font size=3><div align='center' > [[🍎 Project Page]()] [[📖 arXiv Paper](https://arxiv.org/abs/2412.11767)] [[🤗 Dataset](https://huggingface.co/datasets/ali-vilab/IDEA-Bench)] [[⚔️ Arena (coming soon)]()]  </div></font>
+<font size=3><div align='center' > [[🍎 Project Page](https://ali-vilab.github.io/IDEA-Bench-Page/)] [[📖 arXiv Paper](https://arxiv.org/abs/2412.11767)] [[🤗 Dataset](https://huggingface.co/datasets/ali-vilab/IDEA-Bench)] [[⚔️ Arena (coming soon)]()]  </div></font>
 
 ---
 
