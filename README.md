@@ -10,7 +10,7 @@
 
 ## 🔥 News
 
-* **`2024.1.8`**  The official [Arena](https://huggingface.co/spaces/ali-vilab/IDEA-Bench-Arena) is now open. You’re welcome to submit your model results!
+* **`2025.1.8`**  The official [Arena](https://huggingface.co/spaces/ali-vilab/IDEA-Bench-Arena) is now open. You’re welcome to submit your model results!
 * **`2024.12.18`** The code for automated evaluation is available! Please refer to [MLLM Evaluation](#mllm-evaluation).
 * **`2024.12.17`** Paper is available on Arxiv. Dataset is available on Hugging Face. 
 
