@@ -4,12 +4,13 @@
     <img src="./assets/tasks_vis.png" width="100%" height="100%">
 </p>
 
-<font size=3><div align='center' > [[🍎 Project Page](https://ali-vilab.github.io/IDEA-Bench-Page/)] [[📖 arXiv Paper](https://arxiv.org/abs/2412.11767)] [[🤗 Dataset](https://huggingface.co/datasets/ali-vilab/IDEA-Bench)] [[⚔️ Arena (coming soon)]()]  </div></font>
+<font size=3><div align='center' > [[🍎 Project Page](https://ali-vilab.github.io/IDEA-Bench-Page/)] [[📖 arXiv Paper](https://arxiv.org/abs/2412.11767)] [[🤗 Dataset](https://huggingface.co/datasets/ali-vilab/IDEA-Bench)] [[⚔️ Arena](https://huggingface.co/spaces/ali-vilab/IDEA-Bench-Arena)]  </div></font>
 
 ---
 
 ## 🔥 News
 
+* **`2024.1.8`**  The official [Arena](https://huggingface.co/spaces/ali-vilab/IDEA-Bench-Arena) is now open. You’re welcome to submit your model results!
 * **`2024.12.18`** The code for automated evaluation is available! Please refer to [MLLM Evaluation](#mllm-evaluation).
 * **`2024.12.17`** Paper is available on Arxiv. Dataset is available on Hugging Face. 
 
